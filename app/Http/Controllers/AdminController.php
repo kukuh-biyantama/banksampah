@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\jenissampah;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\jual;
 
 class AdminController extends Controller
 {
@@ -93,5 +94,28 @@ class AdminController extends Controller
     {
         jenissampah::findOrFail($id)->delete();
         return redirect()->route('admin.view')->with('success', 'Data berhasil di hapus.');
+    }
+
+    public function indexjual()
+    {
+        $data = jual::with('user', 'jenissampah')->get();
+        return view('admin.jual.index', compact('data'));
+    }
+
+    public function updateStatus($itemId, $status)
+    {
+        $item = jual::findOrFail($itemId);
+
+        // Update the verification status
+        $item->status = $status;
+        $item->save();
+
+        return redirect()->back()->with('success', 'Item verification updated successfully.');
+    }
+
+    public function destroyjual($id)
+    {
+        jual::findOrFail($id)->delete();
+        return redirect()->back()->with('success', 'Item delete successfully.');
     }
 }
