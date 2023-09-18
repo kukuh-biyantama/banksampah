@@ -1,13 +1,11 @@
 <!-- resources/views/your-blade-view.blade.php -->
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Pie Chart Example</title>
+@extends('user.layout.master')
+@section('title', 'status jual')
+@section('content')
+<div class="container mt-5">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-</head>
-<body>
-    <!-- Your content goes here -->
+    <h1>Grafik sampah</h1>
+    
     <div id="pieChart" style="width: 100%; height: 400px;"></div>
 
     <script type="text/javascript">
@@ -27,5 +25,5 @@
             chart.draw(data, options);
         }
     </script>
-</body>
-</html>
+</div>
+@endsection

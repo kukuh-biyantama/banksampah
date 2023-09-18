@@ -26,11 +26,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// route::get('/', [HomeController::class, 'index']);
-
 Route::get('/', [KalkulatorController::class, 'index']);
 Route::post('/kalkulator/hitung', [KalkulatorController::class, 'hitung']);
-// Route::post('', 'KalkulatorController@hitung');
+
 
 
 

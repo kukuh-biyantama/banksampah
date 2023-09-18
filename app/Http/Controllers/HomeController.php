@@ -16,7 +16,7 @@ class HomeController extends Controller
     {
         $userId = Auth::id();
 
-        $statusJual = JenisSampah::where('id', $userId)->get();
+        $statusJual = jual::with('user')->where('user_id', $userId)->get();
         return view('user.pages.statusjual', compact('statusJual'));
     }
 
